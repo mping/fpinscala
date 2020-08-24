@@ -7,10 +7,43 @@ import org.scalatest.FunSuite
  */
 class ListSuite extends FunSuite {
 
+  test("testTail") {
+    val l = List(1, 2, 3, 4)
+    val expected = List(2, 3, 4)
+    assert(List.tail(l) == expected)
+  }
+
+  test("testTail with empty List") {
+    val l = List()
+    val expected = Nil
+    assert(List.tail(l) == expected)
+  }
+  test("test setHead") {
+    val l = List(1,2,3,4)
+    val expected = List(0,2,3,4)
+    assert(List.setHead(l, 0) == expected)
+  }
+
   test("testReverse") {
     val l = List(1, 2, 3, 4)
     val expected = List(4, 3, 2, 1)
     assert(List.reverse(l) == expected)
+  }
+
+  test("testDrop") {
+    val l = List(1, 2, 3, 4)
+    val expected = List(4)
+    assert(List.drop(l, 3) == expected)
+  }
+  test("testDrop to empty list") {
+    val l = List(1, 2, 3, 4)
+    val expected = List()
+    assert(List.drop(l, 4) == expected)
+  }
+  test("testDrop overflow") {
+    val l = List(1, 2, 3, 4)
+    val expected = List()
+    assert(List.drop(l, 10) == expected)
   }
 
   test("foldLeftViaFoldRight with sum") {
