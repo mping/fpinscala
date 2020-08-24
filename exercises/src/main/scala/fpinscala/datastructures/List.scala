@@ -63,6 +63,29 @@ object List { // `List` companion object. Contains functions for creating and wo
   def length[A](l: List[A]): Int = ???
 
   def foldLeft[A,B](l: List[A], z: B)(f: (B, A) => B): B = ???
+  def foldLeftViaFoldRight[A,B](l: List[A], z: B)(f: (B, A) => B): B = ???
+  def foldRightViaFoldLeft[A,B](l: List[A], z: B)(f: (B, A) => B): B = ???
 
   def map[A,B](l: List[A])(f: A => B): List[B] = ???
+
+  def reverse[A](l: List[A]): List[A] = ???
+
+  def appendViaFoldRight[A](l: List[A], l2: List[A]): List[A] = ???
+
+  def concat[A](l: List[A]): List[A] = ???
+
+  def convertToStringList[A](l: List[A]): List[String] = ???
+
+  def transform[A](l: List[A]): List[A] = ???
+  def flatMap[A,B](as: List[A])(f: A => List[B]): List[B] = ???
+
+  def filter[A](l: List[A])(f: A => Boolean): List[A] = ???
+  def filterViaFlatMap[A](l: List[A])(f: A => Boolean): List[A] = ???
+
+  def addTwoList[A](l: List[A], l2: List[A]): List[A] = ???
+
+  def zipWith[A](l: List[A], l2: List[A], a:A, a2: A)(f: (A,A) => A): List[A] = ???
+
+  def hasSubsequence[A](l: List[A], l2: List[A]): Boolean = ???
+
 }

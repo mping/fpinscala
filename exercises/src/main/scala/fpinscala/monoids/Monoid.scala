@@ -58,11 +58,19 @@ object Monoid {
   def foldLeft[A, B](as: List[A])(z: B)(f: (B, A) => B): B =
     ???
 
+  def foldRightViaFoldMap[A, B](as: List[A])(z: B)(f: (B, A) => B): B =
+    ???
+
+  def foldLeftViaFoldMap[A, B](as: List[A])(z: B)(f: (B, A) => B): B =
+    ???
+
   def foldMapV[A, B](as: IndexedSeq[A], m: Monoid[B])(f: A => B): B =
     ???
 
   def ordered(ints: IndexedSeq[Int]): Boolean =
     ???
+
+  def isIndexedSeqInOrder(ints: IndexedSeq[Int]): Boolean = ???
 
   sealed trait WC
   case class Stub(chars: String) extends WC

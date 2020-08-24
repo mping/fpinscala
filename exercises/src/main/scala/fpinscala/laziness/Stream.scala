@@ -1,6 +1,5 @@
 package fpinscala.laziness
 
-import Stream._
 trait Stream[+A] {
 
   def foldRight[B](z: => B)(f: (A, => B) => B): B = // The arrow `=>` in front of the argument type `B` means that the function `f` takes its second argument by name and may choose not to evaluate it.
@@ -18,19 +17,34 @@ trait Stream[+A] {
     case Cons(h, t) => if (f(h())) Some(h()) else t().find(f)
   }
   def take(n: Int): Stream[A] = ???
+  def takeViaUnfold(n: Int): Stream[A] = ???
 
   def drop(n: Int): Stream[A] = ???
 
   def takeWhile(p: A => Boolean): Stream[A] = ???
+  def takeWhileViaFoldRight(p: A => Boolean): Stream[A] = ???
+  def takeWhileViaUnfold(p: A => Boolean): Stream[A] = ???
+  def zipWithViaUnfold[B,C](s2: Stream[B])(f: (A,B) => C): Stream[C] = ???
+  def tails: Stream[Stream[A]] = ???
+  def scanRight[B](z: B)(f: (A, => B) => B): Stream[B] = ???
 
   def forAll(p: A => Boolean): Boolean = ???
+  def map[B](f: A => B): Stream[B] = ???
+  def mapViaUnfold[B](f: A => B): Stream[B] = ???
+  def filter(f: A => Boolean): Stream[A] = ???
+  def append[B>:A](s: => Stream[B]): Stream[B] = ???
 
   def headOption: Option[A] = ???
+  def headOptionViaFoldRight: Option[A] = ???
 
   // 5.7 map, filter, append, flatmap using foldRight. Part of the exercise is
   // writing your own function signatures.
+  def flatMap[B](f: A => Stream[B]): Stream[B] = ???
 
   def startsWith[B](s: Stream[B]): Boolean = ???
+
+  def toList: List[A] = ???
+  def toListRecursive: List[A] = ???
 }
 case object Empty extends Stream[Nothing]
 case class Cons[+A](h: () => A, t: () => Stream[A]) extends Stream[A]
@@ -42,7 +56,17 @@ object Stream {
     Cons(() => head, () => tail)
   }
 
+  val fibs:Stream[Int] = ???
+  val fibsViaUnfold: Stream[Int] = ???
+  def fromViaUnfold(n: Int): Stream[Int] = ???
+
+  def constantViaUnfold[A](a: A): Stream[Int] = ???
+
+  // could also of course be implemented as constant(1)
+  val onesViaUnfold:Stream[Int] = ???
+
   def empty[A]: Stream[A] = Empty
+  def constant[A](a: A): Stream[A] = ???
 
   def apply[A](as: A*): Stream[A] =
     if (as.isEmpty) empty 

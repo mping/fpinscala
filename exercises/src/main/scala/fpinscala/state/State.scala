@@ -32,7 +32,10 @@ object RNG {
 
   def nonNegativeInt(rng: RNG): (Int, RNG) = ???
 
+  def nonNegativeEven(rng: RNG): (Int, RNG) = ???
+
   def double(rng: RNG): (Double, RNG) = ???
+  def doubleViaMap(rng: RNG): (Double, RNG) = ???
 
   def intDouble(rng: RNG): ((Int,Double), RNG) = ???
 

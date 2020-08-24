@@ -79,6 +79,9 @@ to get a Scala REPL with access to your exercises, and
     > run
 
 To get a menu of possible main methods to execute.
+To run a specific suite, you can do:
+
+    > testOnly fpinscala.datastructures.ListSuite
 
 To create project files for the eclipse IDE you can install the
 [sbteclipse](https://github.com/typesafehub/sbteclipse)

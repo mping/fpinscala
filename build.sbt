@@ -12,11 +12,18 @@ lazy val root = (project in file("."))
 lazy val exercises = (project in file("exercises"))
   .settings(commonSettings)
   .settings(
-    name := "exercises"
+    name := "exercises",
+
+    libraryDependencies += "org.scalactic" %% "scalactic" % "3.0.1",
+    libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.1" % "test",
+    libraryDependencies += "org.scoverage" %% "scalac-scoverage-runtime" % "1.3.0" % "test",
+    libraryDependencies += "org.scalacheck" %% "scalacheck" % "1.13.4" % "test"
   )
 
 lazy val answers = (project in file("answers"))
   .settings(commonSettings)
   .settings(
     name := "answers"
-  )
+
+)
+
