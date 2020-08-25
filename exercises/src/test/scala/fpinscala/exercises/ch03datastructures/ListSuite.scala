@@ -13,15 +13,16 @@ class ListSuite extends FunSuite {
     assert(List.tail(l) == expected)
   }
 
-  test("testTail with empty List") {
-    val l = List()
-    val expected = Nil
-    assert(List.tail(l) == expected)
-  }
   test("test setHead") {
     val l = List(1,2,3,4)
     val expected = List(0,2,3,4)
     assert(List.setHead(l, 0) == expected)
+  }
+  test("test setHead with emtpy list") {
+    val l = Nil
+    intercept[RuntimeException] {
+      List.setHead(l, 0)
+    }
   }
 
   test("testReverse") {
@@ -44,6 +45,28 @@ class ListSuite extends FunSuite {
     val l = List(1, 2, 3, 4)
     val expected = List()
     assert(List.drop(l, 10) == expected)
+  }
+
+  test("testDropWhile") {
+    val l = List(1, 2, 3, 4)
+    val expected = List(3,4)
+    assert(List.dropWhile(l, (n:Int)=> n < 3) == expected)
+  }
+
+  test("testInit") {
+    val l = List(1, 2, 3, 4)
+    val expected = List(1,2,3)
+    assert(List.init(l) == expected)
+  }
+
+  test("length via foldRight") {
+    val l = List(1, 2, 3, 4)
+    assert(List.length(l) == 4)
+  }
+
+  test("length for empty list via foldRight") {
+    val l = List()
+    assert(List.length(l) == 0)
   }
 
   test("foldLeftViaFoldRight with sum") {
@@ -100,7 +123,7 @@ class ListSuite extends FunSuite {
     val head = List(1, 2, 3, 4)
     val tail = List(5, 6, 7, 8)
     val expected = List(1, 2, 3, 4, 5, 6, 7, 8)
-    val actual = List.appendViaFoldRight(head, tail)
+    val actual = List.appendViaFoldLeft(head, tail)
     assert(actual == expected)
   }
 
@@ -108,7 +131,7 @@ class ListSuite extends FunSuite {
     val head = Nil
     val tail = List(5, 6, 7, 8)
     val expected = List(5, 6, 7, 8)
-    val actual = List.appendViaFoldRight(head, tail)
+    val actual = List.appendViaFoldLeft(head, tail)
     assert(actual == expected)
   }
 
@@ -116,7 +139,7 @@ class ListSuite extends FunSuite {
     val head = List(5, 6, 7, 8)
     val tail = Nil
     val expected = List(5, 6, 7, 8)
-    val actual = List.appendViaFoldRight(head, tail)
+    val actual = List.appendViaFoldLeft(head, tail)
     assert(actual == expected)
   }
 
