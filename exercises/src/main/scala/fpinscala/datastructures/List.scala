@@ -84,7 +84,7 @@ object List { // `List` companion object. Contains functions for creating and wo
 
   def addTwoList[Int](l: List[Int], l2: List[Int]): List[Int] = ???
 
-  def zipWith[A](l: List[A], l2: List[A], a:A, a2: A)(f: (A,A) => A): List[A] = ???
+  def zipWith[A,B,C](l: List[A], l2: List[B])(f: (A,B) => C): List[C] = ???
 
   def hasSubsequence[A](l: List[A], l2: List[A]): Boolean = ???
 
