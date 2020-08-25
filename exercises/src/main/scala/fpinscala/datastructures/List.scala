@@ -72,7 +72,7 @@ object List { // `List` companion object. Contains functions for creating and wo
 
   def appendViaFoldRight[A](l: List[A], l2: List[A]): List[A] = ???
 
-  def concat[A](l: List[A]): List[A] = ???
+  def concat[A](l: List[List[A]]): List[A] = ???
 
   def convertToStringList[A](l: List[A]): List[String] = ???
 
