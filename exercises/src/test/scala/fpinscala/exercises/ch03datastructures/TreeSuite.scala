@@ -60,35 +60,35 @@ class TreeSuite extends FunSuite {
   test("testFold by testSize") {
     val tree = Branch(Branch(Leaf(1), Leaf(2)), Leaf(3))
     val expected = 5
-    val actual = Tree.fold(tree)(_ => 1)(1 + _ + _)
+    val actual = Tree.sizeViaFold(tree)
     assert(actual == expected)
   }
 
   test("testFold by testMaximum") {
     val tree = Branch(Branch(Leaf(1), Leaf(2)), Leaf(3))
     val expected = 3
-    val actual = Tree.fold(tree)((a: Int) => a)(_ max _)
+    val actual = Tree.maximumViaFold(tree)
     assert(actual == expected)
   }
 
   test("testFold by testMaximum with one leaf") {
     val tree = Leaf(1)
     val expected = 1
-    val actual = Tree.fold(tree)((a: Int) => a)(_ max _)
+    val actual = Tree.maximumViaFold(tree)
     assert(actual == expected)
   }
 
   test("testFold by testDepth") {
     val tree = Branch(Branch(Leaf(1), Leaf(2)), Leaf(3))
     val expected = 2
-    val actual = Tree.fold(tree)(_ => 0)(1 + _ + _)
+    val actual = Tree.depthViaFold(tree)
     assert(actual == expected)
   }
 
   test("testFold by testDepth with one leaf") {
     val tree = Leaf(1)
     val expected = 0
-    val actual = Tree.fold(tree)(_ => 0)(1 + _ + _)
+    val actual = Tree.depthViaFold(tree)
     assert(actual == expected)
   }
 
