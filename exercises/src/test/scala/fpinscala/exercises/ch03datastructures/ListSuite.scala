@@ -262,7 +262,7 @@ class ListSuite extends FunSuite {
   test("addTwoList with one Nil") {
     val as = List(1, 2, 3)
     val bs = List()
-    val expected = List(1, 2, 3)
+    val expected = Nil
     val actual = List.addTwoList(as, bs)
     assert(actual == expected)
   }
@@ -286,7 +286,7 @@ class ListSuite extends FunSuite {
   test("zipWith with one Nil") {
     val as = List(1, 2, 3)
     val bs = List[Int]()
-    val expected = List(1, 2, 3)
+    val expected = Nil
     val actual = List.zipWith(as, bs)(_ + _)
     assert(actual == expected)
   }
@@ -302,7 +302,7 @@ class ListSuite extends FunSuite {
   test("zipWith with string and int one Nil") {
     val as = List("1", "2", "3")
     val bs = List[Object]()
-    val expected = List(false, false, false)
+    val expected = Nil
     val actual = List.zipWith(as, bs)((a, b) => a == b.toString)
     assert(actual == expected)
   }
